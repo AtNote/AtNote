@@ -1,18 +1,13 @@
 'use strict';
 
-const io = require('socket.io')(process.env.PORT);
 require('dotenv').config();
+const mongoose = require('mongoose');
 
-io.on('connection', (socket) => {
-  socket.emit('Welcome to @Note')
-  socket.on('@new', handleNewNote)
-  socket.on('@display', handleDisplay)
-});
+const mongooseOptions = {
+  useNewUrlParser:true,
+  useCreateIndex:true,
+};
 
-function handleNewNote() {
-  
-}
+mongoose.connect(process.env.MONGODB_URI, mongooseOptions);
 
-function handleDisplay() {
-  
-}
+require('./src/app.js').start(process.env.PORT);
