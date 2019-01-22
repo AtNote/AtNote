@@ -2,8 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const Notes = require('../models/note-model.js');
-const notes = new Notes();
+const notes = require('../models/note-model.js');
 
 //Routes
 router.post('/api/notes', postNotes);
@@ -27,4 +26,4 @@ function postNotes(req,res,next) {
     .catch(next);
 }
 
-module.exports = Router;
+module.exports = router;
