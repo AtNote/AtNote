@@ -5,12 +5,12 @@ const router = express.Router();
 const notes = require('../models/note-model.js');
 
 //Routes
-router.get('/api/notes', getAllNotes);
+router.get('/api/notes/:key/:value', getAllNotes);
 router.post('/api/notes', postNotes);
 
 // Functions
 function getAllNotes(req,res,next) {
-  notes.get()
+  notes.get(req.params.key, req.params.value)
     .then(data => {
       const output = {
         results: data,
@@ -19,17 +19,6 @@ function getAllNotes(req,res,next) {
     })
     .catch(next);
 }
-
-// function getAllNotes(req,res,next) {
-//   notes.get()
-//     .then(data => {
-//       const output = {
-//         results: data,
-//       };
-//       res.status(200).json(output);
-//     })
-//     .catch(next);
-// }
 
 function postNotes(req,res,next) {
   notes.post(req.body)
