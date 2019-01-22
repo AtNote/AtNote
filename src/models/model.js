@@ -11,8 +11,9 @@ class DataModel {
     return newNote.save();
   }
 
-  get(_id) {
+  get(_id, user) {
     let query = _id ? {_id} : {};
+    let username = user ? {user} : {};
     return this.schema.find(query);
   }
 
