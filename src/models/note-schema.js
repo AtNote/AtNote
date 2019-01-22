@@ -5,7 +5,7 @@ require('mongoose-schema-jsonschema')(mongoose);
 
 const note = mongoose.Schema ({
   note: {type:String, required:true}, 
-  tags: {type:String, required:false},
+  tags: {type:Array},
 })
 
 module.exports = mongoose.model('note', note);
