@@ -7,6 +7,7 @@ const notes = require('../models/note-model.js');
 //Routes
 router.get('/api/notes/:key/:value', getAllNotes);
 router.post('/api/notes', postNotes);
+router.delete('/api/notes/:key/:value', deleteNotes);
 
 // Functions
 function getAllNotes(req,res,next) {
@@ -22,6 +23,12 @@ function getAllNotes(req,res,next) {
 
 function postNotes(req,res,next) {
   notes.post(req.body)
+    .then(results => res.status(200).json(results))
+    .catch(next);
+}
+
+function deleteNotes(req,res,next) {
+  notes.delete(req.params.key, req.params.value)
     .then(results => res.status(200).json(results))
     .catch(next);
 }
