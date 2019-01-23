@@ -23,8 +23,12 @@ class DataModel {
   //   return this.schema.findByIdAndUpdate(_id, note, {new:true});
   // }
 
-  delete(_id) {
-    return this.schema.findByIdAndDelete(_id);
+  delete(key,value) {
+    let query = {};
+    if(key && value) {
+      query[key] = value;
+    }
+    return this.schema.remove(query);
   }
 
 }
