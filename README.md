@@ -1,26 +1,51 @@
-# -note
-A super cool note taking app that will blow your mind.
+![CF](http://i.imgur.com/7v5ASc8.png) LAB
+=================================================
 
-## User Stories
+## Midterm Project
 
-As a ____, I want ____ so that ____.
+### Author: Brent W. & Jon D.
 
-### User
-*	As a User, I want to be able to quickly takes notes and save them somewhere.
-*	As a User, I want to be able to keep all my notes in one place.
-*	As a User, I want to be able to keep my notes organized.
-*	As a User, I want to be able to manage my notes the way that I want to.
-*	As a User, I want to have the convenience of accessing my notes while I’m writing code and not having to switch through different applications. 
+### Links and Resources
+[![Build Status](https://www.travis-ci.com/BrentTech/10-project-q.svg?branch=master)](https://www.travis-ci.com/BrentTech/10-project-q)
+* [repo](https://github.com/BrentTech/10-project-q)
+* [travis](https://www.travis-ci.com/BrentTech/10-project-q)
+* [back-end](https://q-brent-jon.herokuapp.com)
 
-### Student
-*	As a Student, I want to have the ease of searching through notes I have taken.
-*	As a Student, I want to be able to take notes during a lecture while at the same time working on demo code.
-*	As a Student, I want to be able to keep my notes saved quickly so I can move to swiftly while in lecture. 
+### Documentation
+* [JSDocs](url)
+* [Project Wiki](url)
 
-### Developer
-*	As a Developer, I want to create a server that will save notes taken and send them to other applications to be easier viewed.
-*	As a Developer, I want to be able to access my notes that I save to the server, on the go or enter a command to view them on a web page.
-*	As a Developer, I want to be able to have assess to CRUD commands to manage my notes.
+### Modules
+#### `server.js`
+##### Exported Values and Methods
+`server.js exports the server constructor which includes:
+
+ #####start()
+  Method that starts the server.
+
+ #####connect()
+ connects each event to a namespace and room.
+
+ #####monitorEvent(event) 
+ Takes in an event and pushes it into an array for verifying if it is an allowed event.
+
+### Setup
+#### `.env` requirements
+* `PORT` - 3333
 
 
+#### Running the app
+run nodmone on all client files and the server file.
 
+* `npm start`
+* Endpoint: `/q server connected and connecting clinet applications through the publisher and subscriber classes/`
+
+
+#### Tests
+
+Testing has not been implemented at this time.
+* How do you run tests?
+* What assertions were made?
+* What assertions need to be / should be made?
+
+#### UML
