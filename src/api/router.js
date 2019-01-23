@@ -10,6 +10,13 @@ router.post('/api/notes', postNotes);
 router.delete('/api/notes/:key/:value', deleteNotes);
 
 // Functions
+/**
+ *
+ * 
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 function getAllNotes(req,res,next) {
   notes.get(req.params.key, req.params.value)
     .then(data => {
@@ -21,12 +28,26 @@ function getAllNotes(req,res,next) {
     .catch(next);
 }
 
+/**
+ *
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 function postNotes(req,res,next) {
   notes.post(req.body)
     .then(results => res.status(200).json(results))
     .catch(next);
 }
 
+/**
+ *
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 function deleteNotes(req,res,next) {
   notes.delete(req.params.key, req.params.value)
     .then(results => res.status(200).json(results))
