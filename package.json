@@ -4,7 +4,7 @@
   "description": "Note taking application for Command Line",
   "main": "server.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --verbose --coverage",
     "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json",
     "start": "node server.js"
   },
@@ -28,6 +28,7 @@
     "mongoose": "^5.4.5",
     "mongoose-schema-jsonschema": "^1.2.1",
     "morgan": "^1.9.1",
+    "supertest": "^3.4.2",
     "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {}

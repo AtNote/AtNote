@@ -2,18 +2,36 @@
   "swagger": "2.0",
   "info": {
     "description": "CF 401d28 Midterm Project",
-    "version": "1",
+    "version": "1.0.0",
     "title": "@note Core API"
   },
   "host": "at-note.herokuapp.com",
-  "basePath": "/api/notes",
+  "basePath": "/",
   "schemes": [
     "http"
   ],
   "paths": {
-    "/": {
+    "/api/notes/": {
       "post": {
-        "description": "Create a new resource in the notes model",
+        "summary": "Create a new resource in the notes model",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Note object to be stored",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Returns created resources",
@@ -24,7 +42,7 @@
         }
       }
     },
-    "/{key}/{value}": {
+    "/api/notes/{key}/{value}": {
       "parameters": [
         {
           "in": "path",
@@ -40,7 +58,14 @@
         }
       ],
       "get": {
-        "description": "Get a single or multiple resource(s) from the database based on Key:Value entry",
+        "summary": "Get a single or multiple resource(s) from the database based on Key:Value entry",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "Returned one resource",
@@ -51,7 +76,27 @@
         }
       },
       "delete": {
-        "description": "Get a single or multiple resource(s) from the database based on Key:Value entry",
+        "summary": "Get a single or multiple resource(s) from the database based on Key:Value entry",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "description": "key to search in",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "value",
+            "description": "value to search for, and delete matching entries",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Returns count of removed resource",
