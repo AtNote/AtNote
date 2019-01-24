@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: ToMongo</title>
+    <title>JSDoc: Source: models/edit-json.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,142 +17,51 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: ToMongo</h1>
+    <h1 class="page-title">Source: models/edit-json.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>ToMongo<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-
-    
-    <h4 class="name" id="ToMongo"><span class="type-signature"></span>new ToMongo<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Class to model data according to mongo schema
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_toMongoClass.js.html">models/toMongoClass.js</a>, <a href="models_toMongoClass.js.html#line4">line 4</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="ToMongo.ToMongo.html">ToMongo</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+const fs = require('fs');
+
+/**
+ *
+ * Function takes in a new set that is an 
+ * object. Holds data that will go in to 
+ * file. 
+ * @param {Set} newSet turns set into an array
+ */
+function writeFile(newSet) {
+    let writeContent=`'use strict';
+    let dataObject = ["${newSet}"];
+    module.exports = dataObject; `
+
+    /**
+     *
+     * Function runs within another function 
+     * and takes in a string. Uses a buffer to
+     * wrote to a file
+     * @param {string} str
+     * @returns the file that the buffer is writting to
+     */
+    function buffAppend(str){
+        var buf = Buffer.alloc(str.length);
+        buf.fill(str);
+        return str;
+    }
+    fs.writeFile('./stash.js', buffAppend(writeContent), function (err) {
+        if (err) throw err;
+    })
+} 
+
+module.exports = writeFile;</code></pre>
+        </article>
+    </section>
 
 
 
