@@ -1,11 +1,12 @@
 'use strict';
 
+// Functions
 /**
- *
  * 
- * @param {*} req
- * @param {*} res
- * @param {*} next
+ * Middleware Function to catch any unhandled routes.
+ * @param {Object} req Request object
+ * @param {Object} res Response object
+ * @param next Triggers next middleware.
  */
 module.exports = (req,res,next) => {
   let error = {error: 'Resource not found'};

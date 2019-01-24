@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest --verbose",
+    "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json",
     "start": "node server.js"
   },
   "repository": {
@@ -26,7 +27,8 @@
     "mongodb-memory-server": "^3.0.0",
     "mongoose": "^5.4.5",
     "mongoose-schema-jsonschema": "^1.2.1",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {}
 }
