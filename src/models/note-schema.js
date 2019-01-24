@@ -10,5 +10,3 @@ const note = mongoose.Schema ({
 });
 
 module.exports = mongoose.model('note', note);
-
-Date.now()

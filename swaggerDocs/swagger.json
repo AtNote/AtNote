@@ -1,0 +1,126 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "CF 401d28 Midterm Project",
+    "version": "1",
+    "title": "@note Core API"
+  },
+  "host": "at-note.herokuapp.com",
+  "basePath": "/api/notes",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "description": "Create a new resource in the notes model",
+        "responses": {
+          "200": {
+            "description": "Returns created resources",
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        }
+      }
+    },
+    "/{key}/{value}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "key",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "path",
+          "name": "value",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "get": {
+        "description": "Get a single or multiple resource(s) from the database based on Key:Value entry",
+        "responses": {
+          "200": {
+            "description": "Returned one resource",
+            "schema": {
+              "$ref": "#/definitions/single"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Get a single or multiple resource(s) from the database based on Key:Value entry",
+        "responses": {
+          "200": {
+            "description": "Returns count of removed resource",
+            "schema": {
+              "$ref": "#/definitions/delete"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "delete": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {}
+      },
+      "example": {
+          "electionId": "<id>",
+          "n": "<number of deleted documents>",
+          "ok": 1,
+          "opTime": {
+            "t": 1,
+            "ts": "6649826610889359361"
+          },
+          "operationTime": "6649826610889359361"
+      }
+    },
+    "single": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {}
+      },
+      "example": {
+        "_id": {
+            "$oid": "<unique id>"
+        },
+        "tags": [
+            "<tempTag1>",
+            "<tempTag2>",
+            "<tempTag3>"
+        ],
+        "note": "This is a note. Sweet!",
+        "user": "<username>",
+        "__v": 0
+      }
+    },
+    "post": {
+      "type": "object",
+      "required": ["note", "user"],
+      "properties": {
+        "note": {
+          "type": "string",
+          "description": "Note entered into CLI @note application"
+        },
+        "user": {
+          "type": "string",
+          "description": "User's name captured by env property"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Any word following an '@' symbol, later a searchable property"
+        }
+      }
+    }
+  }
+}
