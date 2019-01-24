@@ -11,10 +11,8 @@ describe('Note Model', () => {
     let obj = {note:'This is a note about how great cheese is!', user:'Brent', tags:['Cheese']};
     return note.post(obj)
       .then(record => {
-        Object.keys(obj).forEach(key =>{
-          expect(record[key]).toEqual(obj[key]);
-          done();
-        });
+        expect(record._id).toBeTruthy();
+        done();
       });
   });
 
@@ -22,12 +20,11 @@ describe('Note Model', () => {
     let obj = {note:'This is a note about how great cheese is!', user:'Brent', tags:['Cheese']};
     return note.post(obj)
       .then(record => {
-        return note.get(record._id)
-          .then(player => {
-            Object.keys(obj).forEach(key =>{
-              expect(player[0][key]).toEqual(obj[key]);
-              done();
-            });
+        return note.get('_id', record._id)
+          .then(data => {
+            console.log(data);
+            expect(data.body.results.tags).toEqual(obj.tags);
+            done();
           });
       });
   });
@@ -37,11 +34,9 @@ describe('Note Model', () => {
     return note.post(obj)
       .then(record => {
         return note.delete(record._id)
-          .then( note => {
-            Object.keys(obj).forEach(key =>{
-              expect(note[0][key]).toEqual(obj[key]);
-              done();
-            });
+          .then(player => {
+            expect(player.n).toBeTruthy();
+            done();
           });
       });
   });

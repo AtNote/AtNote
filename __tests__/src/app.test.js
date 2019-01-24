@@ -46,54 +46,6 @@ describe('API Server', () => {
           done();
         });
     });
-
-    it('following a create note, should find a note by _id', (done) => {
-      let obj = {note:'This is a note about how great cheese is!', user:'Brent', tags:['Cheese']};
-      return mockRequest
-        .post('/api/notes/')
-        .send(obj)
-        .then(results => {
-          return mockRequest
-            .get(`/api/notes/_id/${results.body._id}`)
-            .then(data => {
-              expect(data.status).toBe(200);
-              expect(data.body.results.note).toEqual(obj.note);
-              done();
-            });
-        });
-    });
-    it('following a create note, should find a note by tag', (done) => {
-      let obj = {note:'This is a note about how great cheese is!', user:'Brent', tags:['chedda', 'american']};
-      return mockRequest
-        .post('/api/notes/')
-        .send(obj)
-        .then(results => {
-          return mockRequest
-            .get(`/api/notes/tags/${results.body.tags[1]}`)
-            .then(data => {
-              expect(data.status).toBe(200);
-              expect(data.body.results.tags[1]).toEqual('american');
-              expect(data.body.results.tags[0]).toEqual('chedda');
-              done();
-            });
-        });
-    });
-    it('following a create note, should find all notes for a user', (done) => {
-      let obj = {note:'This is a note about how great cheese is!', user:'Brent'};
-      return mockRequest
-        .post('/api/notes/')
-        .send(obj)
-        .then(results => {
-          return mockRequest
-            .get(`/api/notes/user/${obj.user}`)
-            .then(data => {
-              expect(data.status).toBe(200);
-              expect(data.body.results.note).toEqual(obj.note);
-              done();
-            });
-        });
-    });
-
   });
 
   describe('API Delete Routes', () => {
