@@ -27,12 +27,12 @@ app.use(express.urlencoded({extended:true}));
 //Static Routes
 app.use('/docs', express.static('docs'));
 
+// Swagger
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 //routes
 app.use(router);
 app.use(notFound);
-
-// Swagger
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Error handling
 app.use(errorHandler);
