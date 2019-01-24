@@ -1,6 +1,6 @@
 {
   "name": "AtNote",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Note taking application for Command Line",
   "main": "server.js",
   "scripts": {
