@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest --verbose",
+    "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json",
     "start": "node server.js"
   },
   "repository": {
@@ -27,8 +28,7 @@
     "mongoose": "^5.4.5",
     "mongoose-schema-jsonschema": "^1.2.1",
     "morgan": "^1.9.1",
-    "socket.io": "^2.2.0",
-    "socket.io-client": "^2.2.0"
+    "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {}
 }
