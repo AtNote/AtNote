@@ -26,6 +26,7 @@ app.use(express.urlencoded({extended:true}));
 
 //Static Routes
 app.use('/docs', express.static('docs'));
+app.use('/clientdocs', express.static('clientdocs'));
 
 // Swagger
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
@@ -37,18 +38,14 @@ app.use(notFound);
 // Error handling
 app.use(errorHandler);
 
-let isRunning = false;
-
-module.exports = {
-  server: app,
-  start: (port) => {
-    if(!isRunning) {
-      app.listen(port, () => {
-        isRunning = true;
-        console.log(`Server is up on ${port}`);
-      });
-    } else {
-      console.log('Server is already running');
-    }
-  },
+/**
+ * Start Server on specified port
+ * @param {integer} port (defaults to process.env.PORT)
+ */
+let start = (port = process.env.PORT) => {
+  app.listen(port, () => {
+    console.log(`Server Up on ${port}`);
+  });
 };
+
+module.exports = {app, start};
